@@ -58,5 +58,20 @@ namespace ExpenseListWepApp.Controllers
 
         }
 
+        public IActionResult Delete(int id)
+        {
+            var i=_db.Expenses.Find(id);
+            if (i == null)
+            {
+                return NotFound();
+            }
+            _db.Expenses.Remove(i);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+
+
+        }
     }
+
 }
